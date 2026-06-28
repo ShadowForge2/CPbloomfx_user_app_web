@@ -102,6 +102,31 @@
       color: rgba(255,255,255,0.9);
     }
 
+    #floating-download-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9998;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      border: 2px solid #4caf50;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    #floating-download-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+    }
+
     @media (max-width: 480px) {
       #app-download-banner .banner-text {
         font-size: 12px;
@@ -109,6 +134,13 @@
       #app-download-banner .download-btn {
         font-size: 11px;
         padding: 5px 10px;
+      }
+      #floating-download-btn {
+        width: 48px;
+        height: 48px;
+        font-size: 20px;
+        bottom: 16px;
+        right: 16px;
       }
     }
   </style>
@@ -125,6 +157,8 @@
     </div>
   </div>
 
+  <a id="floating-download-btn" href="#" target="_blank" rel="noopener" title="Download BloomFX App">⬇</a>
+
   <!--
     You can customize the "flutter_bootstrap.js" script.
     This is useful to provide a custom configuration to the Flutter loader
@@ -136,12 +170,16 @@
   <script src="flutter_bootstrap.js" async></script>
   <script>
     (function() {
-      var dismissed = localStorage.getItem('downloadBannerDismissed');
+      var APK_URL = '/downloads/BloomFX-1.0.0.apk';
+
       var banner = document.getElementById('app-download-banner');
       var closeBtn = document.getElementById('close-banner-btn');
       var downloadBtn = document.getElementById('download-apk-btn');
+      var floatingBtn = document.getElementById('floating-download-btn');
 
-      if (dismissed === 'true') {
+      var bannerHidden = sessionStorage.getItem('bannerHidden');
+
+      if (bannerHidden === 'true') {
         banner.style.display = 'none';
         document.body.style.paddingTop = '0';
       }
@@ -149,11 +187,11 @@
       closeBtn.addEventListener('click', function() {
         banner.style.display = 'none';
         document.body.style.paddingTop = '0';
-        localStorage.setItem('downloadBannerDismissed', 'true');
+        sessionStorage.setItem('bannerHidden', 'true');
       });
 
-      // Replace this with the actual APK URL on your server
-      downloadBtn.href = '/downloads/BloomFX-1.0.0.apk';
+      downloadBtn.href = APK_URL;
+      floatingBtn.href = APK_URL;
     })();
   </script>
 </body>
