@@ -18,147 +18,21 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="CPBloomFX - Copy Trading Investment Platform">
+  <meta name="description" content="A new Flutter project.">
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="CPBloomFX">
+  <meta name="apple-mobile-web-app-title" content="bloomfx_user_app">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>CPBloomFX</title>
+  <title>bloomfx_user_app</title>
   <link rel="manifest" href="manifest.json">
-  <script src="https://js.paystack.co/v1/inline.js"></script>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { height: 100%; overflow: hidden; }
-    body { padding-top: 48px; }
-
-    #app-download-banner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 16px;
-      background: linear-gradient(135deg, #1a1a2e, #16213e);
-      color: #fff;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      font-size: 13px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 9999;
-      min-height: 48px;
-    }
-    #app-download-banner .banner-content {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex: 1;
-    }
-    #app-download-banner .banner-icon {
-      font-size: 20px;
-      flex-shrink: 0;
-    }
-    #app-download-banner .banner-text {
-      flex: 1;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    #app-download-banner .download-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      background: #4caf50;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      flex-shrink: 0;
-      transition: background 0.2s;
-    }
-    #app-download-banner .download-btn:hover {
-      background: #43a047;
-    }
-    #app-download-banner .close-btn {
-      background: none;
-      border: none;
-      color: rgba(255,255,255,0.5);
-      font-size: 22px;
-      cursor: pointer;
-      padding: 0 4px;
-      flex-shrink: 0;
-      line-height: 1;
-    }
-    #app-download-banner .close-btn:hover {
-      color: rgba(255,255,255,0.9);
-    }
-
-    #floating-download-btn {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 9998;
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #1a1a2e, #16213e);
-      border: 2px solid #4caf50;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      cursor: pointer;
-      text-decoration: none;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    #floating-download-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
-    }
-
-    @media (max-width: 480px) {
-      #app-download-banner .banner-text {
-        font-size: 12px;
-      }
-      #app-download-banner .download-btn {
-        font-size: 11px;
-        padding: 5px 10px;
-      }
-      #floating-download-btn {
-        width: 48px;
-        height: 48px;
-        font-size: 20px;
-        bottom: 16px;
-        right: 16px;
-      }
-    }
-  </style>
 </head>
 <body>
-  <div id="app-download-banner">
-    <div class="banner-content">
-      <span class="banner-icon">📱</span>
-      <span class="banner-text">Get the mobile app for a better experience</span>
-      <a class="download-btn" href="#" id="download-apk-btn" target="_blank" rel="noopener">
-        Download APK
-      </a>
-      <button class="close-btn" id="close-banner-btn" aria-label="Close">&times;</button>
-    </div>
-  </div>
-
-  <a id="floating-download-btn" href="#" target="_blank" rel="noopener" title="Download BloomFX App">⬇</a>
-
   <!--
     You can customize the "flutter_bootstrap.js" script.
     This is useful to provide a custom configuration to the Flutter loader
@@ -168,31 +42,5 @@
     * https://docs.flutter.dev/platform-integration/web/initialization
   -->
   <script src="flutter_bootstrap.js" async></script>
-  <script>
-    (function() {
-      var APK_URL = '/downloads/BloomFX-1.0.0.apk';
-
-      var banner = document.getElementById('app-download-banner');
-      var closeBtn = document.getElementById('close-banner-btn');
-      var downloadBtn = document.getElementById('download-apk-btn');
-      var floatingBtn = document.getElementById('floating-download-btn');
-
-      var bannerHidden = sessionStorage.getItem('bannerHidden');
-
-      if (bannerHidden === 'true') {
-        banner.style.display = 'none';
-        document.body.style.paddingTop = '0';
-      }
-
-      closeBtn.addEventListener('click', function() {
-        banner.style.display = 'none';
-        document.body.style.paddingTop = '0';
-        sessionStorage.setItem('bannerHidden', 'true');
-      });
-
-      downloadBtn.href = APK_URL;
-      floatingBtn.href = APK_URL;
-    })();
-  </script>
 </body>
 </html>
