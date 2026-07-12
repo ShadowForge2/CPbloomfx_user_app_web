@@ -1,6 +1,6 @@
 {
-    "name": "bloomfx_user_app",
-    "short_name": "bloomfx_user_app",
+    "name": "CPBloomFX",
+    "short_name": "CPBloomFX",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
