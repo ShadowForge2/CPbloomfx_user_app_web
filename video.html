@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CPBLOOMFX Demo</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #0a0e17;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .wrap {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+  }
+  .brand {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #f5c542;
+    margin-bottom: 20px;
+  }
+  .brand em {
+    font-style: normal;
+    color: #00e5a0;
+  }
+  video {
+    width: 100%;
+    max-width: 480px;
+    max-height: 82vh;
+    background: #000000;
+    border-radius: 14px;
+    box-shadow: 0 10px 40px rgba(0,0,0,.6);
+    outline: none;
+  }
+  .caption {
+    margin-top: 18px;
+    font-size: 14px;
+    color: #9aa7bd;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">CP<span><em>BLOOM</em></span>FX</div>
+    <video controls autoplay playsinline preload="metadata" src="media/demo_3x.mp4"></video>
+    <div class="caption">CPBLOOMFX demo video</div>
+  </div>
+</body>
+</html>
